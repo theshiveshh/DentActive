@@ -1,0 +1,881 @@
+<!doctype html>
+<html data-template="home" lang="en" class="has-no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
+    <title>DentActive - Spot Car Damage With Ease</title>
+
+    <meta name="description" content="DentActive - Spot Car Damage With Ease">
+    <meta property="og:description" content="DentActive - Spot Car Damage With Ease">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="True">
+
+    <!-- Appearance -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favi.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css">
+
+    <script src="https://www.google.com/recaptcha/api.js?hl=en&render=explicit" async defer></script>
+</head>
+
+<body>
+    <div class="c-loader">
+        <div class="loading-window">
+            <div class="car">
+                <div class="strike"></div>
+                <div class="strike"></div>
+                <div class="strike"></div>
+                <div class="strike"></div>
+                <div class="strike"></div>
+                <div class="strike"></div>
+                <div class="speed">
+                    <div class="car-detail center"></div>
+                    <div class="car-detail center2"></div>
+                    <div class="car-detail top"></div>
+                    <div class="car-detail window"></div>
+                    <div class="car-detail window"></div>
+                    <div class="car-detail window"></div>
+                    <div class="car-detail window"></div>
+                    <div class="car-detail window"></div>
+                    <div class="car-detail rear-bumper"></div>
+                    <div class="car-detail front-bumper"></div>
+                    <div class="car-detail front-light"></div>
+                    <div class="car-detail wheel"></div>
+                    <div class="car-detail wheel"></div>
+                    <div class='car-detail door'></div>
+                </div>
+            </div>
+
+            <div class="text">
+                <span><strong>DENT</strong>ACTIVE</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="c-preloader"></div>
+    <div class="c-transition-light"></div>
+
+    <!-- Popup video -->
+    <div id="js-pjax-wrapper">
+        <div class="js-pjax-container" data-template="home">
+
+            <header class="c-header">
+                <button class="c-header_menu-btn c-menu-btn" type="button" data-module="NavToggler" data-on="click"
+                    data-event-category="ui.menu.burger" data-event-action="toggle">
+                    <span class="u-screen-reader-text">Menu</span>
+                    <span class="c-menu-btn_container">
+                        <span class="c-menu-btn_item"></span>
+                        <span class="c-menu-btn_item"></span>
+                        <span class="c-menu-btn_item"></span>
+                    </span>
+                </button>
+
+                <span class="c-header_tagline"><strong>DENT</strong>ACTIVE</span>
+
+                <div class="c-header_bg" data-module="NavToggler" data-on="click" data-event-category="ui.menu.burger"
+                    data-event-action="toggle"></div>
+            </header>
+
+            <div class="c-nav" data-module="Nav">
+                <div class="c-nav_container">
+                    <div class="c-nav-main">
+                        <a href="" class="c-nav_logo">
+                            <span class="u-screen-reader-text">DentActive - Spot Car Damage With Ease</span>
+                        </a>
+
+                        <button id="close-btn" class="c-nav_close-label-wrapper js-close-nav" type="button">
+                            <span class="c-nav_close-label">Close</span>
+                        </button>
+
+                        <button type="button" class="o-button-round -white c-nav_close-btn js-close-nav">
+                            <span class="u-screen-reader-text">Close</span>
+                        </button>
+
+                        <ul class="c-nav_list">
+                            <li class="c-nav_list_item">
+                                <a href="https://github.com/ec-026" class="c-nav_list_item_link o-link">GitHub
+                                    Repository</a>
+                            </li>
+                            <li class="c-nav_list_item">
+                                <a href="https://colab.research.google.com/drive/110Q4g5JHcFjca3CKrotRXkdQmzQ3O7tB?usp=sharing"
+                                    class="c-nav_list_item_link o-link">Check Trained Model</a>
+                            </li>
+                            <li class="c-nav_list_item">
+                                <a href="https://drive.google.com/drive/u/9/folders/10lZJ17bG8gJaFlHjdVs_QuKdCtDsGoRY"
+                                    class="c-nav_list_item_link o-link">Test Images Result</a>
+                            </li>
+                        </ul>
+                        <ul class="c-social-nav">
+                            <li class="c-social-nav_item">
+                                <a class="c-social-nav_item_link" href="" target="_blank">
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="c-social-nav_item">
+                                <a class="c-social-nav_item_link" href="" target="_blank">
+                                    Twitter
+                                </a>
+                            </li>
+                            <li class="c-social-nav_item">
+                                <a class="c-social-nav_item_link" href="" target="_blank">
+                                    YouTube
+                                </a>
+                            </li>
+                            <li class="c-social-nav_item">
+                                <a class="c-social-nav_item_link" href="" target="_blank">
+                                    LinkedIn
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact-us" class="c-nav-tile -top -white js-scrollto no-transition"
+                        onclick="document.getElementById('close-btn').click()">
+                        <div class="c-nav-tile_content">
+                            <p class="o-label c-nav-tile_label">
+                                <span class="o-label_item">01</span>
+                                <span class="o-label_line"></span>
+                                <span class="o-label_item">Contact us</span>
+                            </p>
+
+                            <p class="c-nav-tile_title">
+                                Communicate With Us
+                            </p>
+                        </div>
+
+                        <div class="o-button-round -grey c-nav-tile_btn">
+                        </div>
+
+                        <div class="c-nav-tile_bg"></div>
+                    </a>
+
+                    <a href="#upload" class="c-nav-tile -bottom -red js-scrollto no-transition"
+                        onclick="document.getElementById('close-btn').click()">
+                        <div class="c-nav-tile_content">
+                            <p class="o-label c-nav-tile_label">
+                                <span class="o-label_item">02</span>
+                                <span class="o-label_line"></span>
+                                <span class="o-label_item">Customize</span>
+                            </p>
+
+                            <p class="c-nav-tile_title">
+                                Start Detecting Damage
+                            </p>
+                        </div>
+
+                        <div class="o-button-round c-nav-tile_btn">
+                        </div>
+
+                        <div class="c-nav-tile_bg"></div>
+                    </a>
+                </div>
+
+                <div class="c-nav-bg_item -top"></div>
+                <div class="c-nav-bg_item -bottom"></div>
+            </div>
+
+            <div class="c-main-cta">
+                <div class="c-main-cta_item">
+                    <a href="#contact-us" class="o-button-round c-main-cta_item_btn -reach-us js-scrollto no-transition"
+                        data-transition="LightTransition" data-on="click" data-event-category="ui.main-cta.reach-us"
+                        data-event-action="click" onclick="document.getElementById('close-btn').click()">
+                        <span class="u-screen-reader-text">Communicate With Us</span>
+                    </a>
+                    <div class="c-main-cta_item_label-wrapper">
+                        <span class="c-main-cta_item_label" aria-hidden="true">Communicate With Us</span>
+                    </div>
+                </div>
+
+                <div class="c-main-cta_item">
+                    <div class="c-main-cta_item_label-wrapper -inverted">
+                        <span class="c-main-cta_item_label -inverted" aria-hidden="true">Start Detecting Damage</span>
+                    </div>
+                    <a href="#upload" class="o-button-round c-main-cta_item_btn -bike-share js-scrollto no-transition"
+                        <span class=" u-screen-reader-text">Start Detecting Damage</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="c-main-cta-mobile" data-module="StickyMobileCTA">
+                <div class="c-main-cta-mobile_item">
+                    <a href="#cotact-us" class="o-button-round c-main-cta-mobile_item_btn -reach-us"
+                        data-transition="LightTransition" data-on="click"
+                        data-event-category="ui.main-cta-mobile.reach-us" data-event-action="click"
+                        onclick="document.getElementById('close-btn').click()">
+                        <span class="u-screen-reader-text">Communicate With Us</span>
+                    </a>
+                </div>
+
+                <div class="c-main-cta-mobile_item">
+                    <a href="#upload" class="o-button-round c-main-cta-mobile_item_btn -bike-share"
+                        data-transition="LightTransition" data-on="click"
+                        data-event-category="ui.main-cta-mobile.build-bike-share" data-event-action="click"
+                        onclick="document.getElementById('close-btn').click()">
+                        <span class="u-screen-reader-text">Start Detecting Damage</span>
+                    </a>
+                </div>
+
+                <div class="c-main-cta-mobile_toggler">
+                    <button type="button" class="o-button-round c-main-cta-mobile_item_toggler-btn -red">
+                        <span class="u-screen-reader-text">Close</span>
+                        <span class="c-main-cta-mobile_toggler_close"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Start home -->
+
+            <div class="c-header-cta -anchor-nav" data-module="SectionLabel">
+                <div class="c-header-cta_label-container">
+                    <span class="c-header-cta_label" data-section="anchor-technology">Our technology</span>
+                    <!-- <span class="c-header-cta_label" data-section="anchor-dna">Our DNA</span> -->
+                    <span class="c-header-cta_label" data-section="anchor-experts">Our experts</span>
+                    <span class="c-header-cta_label" data-section="anchor-news">Test Image Results</span>
+                </div>
+                <div class="c-header_bg c-header-cta_bg"></div>
+            </div>
+
+            <!-- scroll -->
+            <div class="o-page u-overflow o-scroll" data-module="Scroll">
+
+                <div class="o-anchor-section-stop js-animate" data-callback="hideAll.SectionLabel()" data-repeat></div>
+
+                <div class="o-anchor-section-stop js-animate" data-callback="revert.CarouselZoom()" data-repeat
+                    data-position="top"></div>
+
+                <div class="c-main-cta-trigger -show js-animate" data-module="StickyCTA"
+                    data-callback="showLabel.StickyCTA()" data-repeat></div>
+                <div class="c-main-cta-trigger js-animate" data-module="StickyCTA" data-callback="hideLabel.StickyCTA()"
+                    data-repeat></div>
+
+                <div class="o-container-full -white">
+                    <div class="o-container">
+                        <div class="c-header-page">
+                            <ul class="c-header-page_content c-anchors-nav">
+                                <li class="c-anchors-nav_item">
+                                    <a href="#anchor-technology" class="o-link -small js-scrollto no-transition">
+                                        Our technology
+                                    </a>
+                                </li>
+                                <li class="c-anchors-nav_item">
+                                    <a href="#anchor-experts" class="o-link -small js-scrollto no-transition">
+                                        Our experts
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="c-header-page_content">
+                                <h1 class="o-h c-header-page_main-title font-apercu js-animate" data-module="SplitText"
+                                    data-callback="revert.SplitText()">Spot Car Damage With Ease</h1>
+                                <p class="o-label -huge">
+                                    <span class="o-label_line"></span>
+                                    <span class="o-label_item">Start Your Exploration Now</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="o-anchor-section js-animate" id="anchor-technology" data-callback="trigger.SectionLabel()"
+                    data-repeat data-position="middle">
+                    <div class="c-carousel-sticky-container -carousel-zoom">
+                        <div class="c-carousel -flex -zoom js-animate" data-module="CarouselZoom" data-position="top">
+                            <div class="c-carousel-zoom">
+                                <div class="c-carousel-zoom_sizer"></div>
+                                <div class="c-carousel-zoom_img-wrapper">
+                                    <div class="c-carousel-zoom_move-wrapper">
+                                        <img class="c-carousel-zoom_img js-zoom"
+                                            src="{{ url_for('static', filename='images/toyata.png') }}" alt="">
+                                    </div>
+                                </div>
+                                <div class=" c-carousel-zoom_bg js-animate" data-speed="1" data-position="top">
+                                </div>
+                            </div>
+
+                            <div class="c-carousel-zoom_trigger js-carousel-zoom-skip js-animate"
+                                data-callback="trigger.CarouselZoom()" data-repeat></div>
+                        </div>
+
+                        <div class="c-carousel-box" data-module="CarouselZoomBox">
+                            <div class="c-carousel-box_slider">
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="0" data-y="0"
+                                    data-zoom="0.75">
+                                    <p class="o-label">
+                                        <span class="o-label_item">01 / 01</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Car</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">Spot car damage easily with our platform's video and
+                                        image upload feature. Keep your car looking great with confidence.</p>
+                                </div>
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="-28.9" data-y="-7.2"
+                                    data-zoom="2.3">
+                                    <p class="o-label">
+                                        <span class="o-label_item">02 / 01</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Dent</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">Easily detect car damage with our advanced image
+                                        analysis technology that highlights even the smallest dents.
+                                    </p>
+                                </div>
+
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="-3" data-y="0"
+                                    data-zoom="3.5">
+                                    <p class="o-label">
+                                        <span class="o-label_item">03 / 01</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Scratch</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">Pinpoint even the smallest car scratches with our
+                                        advanced image analysis technology for accurate detection.</p>
+                                </div>
+
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="75" data-y="-4"
+                                    data-zoom="3.8">
+                                    <p class="o-label">
+                                        <span class="o-label_item">03 / 02</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Scratch</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">Say goodbye to unnoticed car scratches with our
+                                        advanced image analysis that spots even minute damages.
+                                    </p>
+                                </div>
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="0" data-y="25"
+                                    data-zoom="3">
+                                    <p class="o-label">
+                                        <span class="o-label_item">04 / 01</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Glass Break</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">See clearly and drive safely with our platform's
+                                        advanced image analysis technology that detects even the tiniest glass damage.
+                                    </p>
+                                </div>
+                                <div class="c-carousel-box_slide js-carousel-slide" data-x="0" data-y="0"
+                                    data-zoom="0.75">
+                                    <p class="o-label">
+                                        <span class="o-label_item">01 / 02</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Car</span>
+                                    </p>
+
+                                    <p class="c-carousel-box_text">Revolutionize the way you care for your car with our
+                                        platform's cutting-edge image analysis technology for quick damage detection.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button type="button" class="o-button c-carousel-box_skip-btn" data-on="click"
+                                data-event-category="ui.carousel-zoom.slider" data-event-action="skip">Skip</button>
+                        </div>
+                    </div>
+
+                    <section class="o-container-full c-block-product -light">
+                        <div id="upload"
+                            class="o-container -larger c-block c-block-two-col-text c-block-product_header">
+                            <div id="upload-secton" class="-gutter">
+                                <div id="text" class="m-textarea o-layout_item">
+                                    <p class="o-label c-block-post-top_label">
+                                        <span class="o-label_item">Detect</span>
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Analyze & Report</span>
+                                    </p>
+                                    <h2 class="o-h1 font-apercu js-animate is-show">Upload image/ video to detect
+                                        damage.</h2>
+                                </div>
+                                <div class="upload-cont">
+                                    <form class="form-upload" method="post" enctype="multipart/form-data" name="form1">
+                                        <label for="file" id="upload-button" class="label-content">
+                                            <span class="inner"></span>
+                                            <i class="fa fa-camera"></i>
+                                            <input type="file" name="file" id="file" class="form-control-file sr-only"
+                                                onchange="this.form.submit()">
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-block-product_list">
+                            <div class="o-container -larger">
+                                <div class="c-block-product_container">
+                                    <div class="c-block-product_item">
+                                        <p class="c-block-product_number o-label">
+                                            01</p>
+                                        <h4 class="c-block-product_text">
+                                            <strong class="c-block-product_text_title">Precise and Reliable Damage
+                                                Detection</strong>
+                                            Our advanced algorithms detect and analyze damages with pinpoint
+                                            accuracy,
+                                            giving you detailed insights into your car's condition.
+                                        </h4>
+                                    </div>
+                                    <div class="c-block-product_item">
+                                        <p class="c-block-product_number o-label">02</p>
+                                        <h4 class="c-block-product_text">
+                                            <strong class="c-block-product_text_title">Simple and Convenient Damage
+                                                Uploads</strong> With our easy-to-use upload feature, you can
+                                            effortlessly upload images or videos of your car's damages in just a few
+                                            clicks.
+                                        </h4>
+                                    </div>
+                                    <div class="c-block-product_item">
+                                        <p class="c-block-product_number o-label">03</p>
+                                        <h4 class="c-block-product_text">
+                                            <strong class="c-block-product_text_title">Customized Damage Assessment
+                                                Reports</strong> Our detailed damage reports give you a complete
+                                            overview of the damages, including specific areas affected and
+                                            recommended
+                                            repairs.
+                                        </h4>
+                                    </div>
+                                    <div class="c-block-product_item">
+                                        <p class="c-block-product_number o-label">04</p>
+                                        <h4 class="c-block-product_text">
+                                            <strong class="c-block-product_text_title">Expert Support Anytime,
+                                                Anywhere</strong> Our team of dedicated experts is available around
+                                            the
+                                            clock to answer your questions, offer advice, and provide support
+                                            whenever
+                                            you need it.
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="c-block-product_bg js-animate" data-speed="1"></div>
+                        </div>
+                    </section>
+
+                    <section class="c-dock-mode" data-module="DockToggler">
+                        <div class="o-container-full c-dock-mode_container">
+                            <div class="o-container -larger c-block c-block-two-col-text">
+                                <div class="o-layout -gutter -bottom c-block-two-col-text_top">
+                                    <div class="o-layout_item u-1/2@from-small">
+                                        <h2 class="o-h2 font-apercu c-block-two-col-text_title js-animate -split-white"
+                                            data-module="SplitText" data-callback="revert.SplitText()">From Idea to
+                                            Reality!</h2>
+                                    </div>
+
+                                    <div class="o-layout_item u-1/2@from-small">
+                                        <div class="o-button-label-container">
+                                            <a href="https://colab.research.google.com/drive/110Q4g5JHcFjca3CKrotRXkdQmzQ3O7tB?usp=sharing"
+                                                class="o-button-label-wrap">
+                                                <p class="o-button-label -white">Check Out<br>Trained Model</p>
+                                                <div class="o-button-round c-block-two-col-text_btn">
+                                                    <span class="u-screen-reader-text">Start Dtecting Damage</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="o-layout -gutter c-block-two-col-text_bottom">
+                                    <div class="o-layout_item u-1/2@from-small c-block-two-col-text_col">
+                                        <p>The journey of turning a car damage detection concept into a
+                                            fully-functional
+                                            website.</p>
+                                    </div>
+
+                                    <div class="o-layout_item u-1/2@from-small c-block-two-col-text_col">
+                                        <div class="o-button-container">
+                                            <button type="button" class="o-button -button-red js-dock-btn is-active"
+                                                data-toggle="dockless">OpenCV</button>
+                                            <button type="button" class="o-button -button-red js-dock-btn"
+                                                data-toggle="dockbased">YOLO</button>
+                                            <button type="button" class="o-button -button-red js-dock-btn"
+                                                data-toggle="hybrid">Flask</button>
+                                        </div>
+
+                                        <div class="c-block-two-col-text_list-container">
+                                            <ul class="c-dock-mode_list -dockless js-list-dockless">
+                                                <li>Facilitated car image analysis.</li>
+                                                <li>Object detection aided damage detection.</li>
+                                                <li>Deep learning capabilities improved accuracy.</li>
+                                                <li>GUI functions enhanced usability.</li>
+                                            </ul>
+
+                                            <ul class="c-dock-mode_list -dockbased js-list-dockbased">
+                                                <li>Architecture improved car detection accuracy.</li>
+                                                <li>Allowed for real-time car damage detection.</li>
+                                                <li>Multi-damage detection made easier.</li>
+                                                <li>Fine-tuned for customization.</li>
+                                            </ul>
+
+                                            <ul class="c-dock-mode_list -dockbased js-list-hybrid">
+                                                <li>Allowed for web application development.</li>
+                                                <li>Simplified server-side logic.</li>
+                                                <li>Made it easier to deploy and scale the application.</li>
+                                                <li>Enabled real-time data processing.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-dock-mode_img-container">
+                            <div class="c-dock-mode_img-container_item -dockless">
+                                <div class="c-dock-mode_app-img js-dockless-img -left">
+                                    <img class="c-dock-mode_img-container_item_image js-animate" data-speed="1"
+                                        src="{{ url_for('static', filename='images/Python.png') }}" alt="">
+                                </div>
+                                <div class="c-dock-mode_app-img js-dockless-img -right">
+                                    <img class="c-dock-mode_img-container_item_image js-animate" data-speed="-1"
+                                        src="{{ url_for('static', filename='images/OpenCV-01.png') }}" alt="">
+                                </div>
+                            </div>
+
+                            <div class="c-dock-mode_img-container_item js-dockbased-img -dockbased">
+                                <img class="c-dock-mode_img-container_item_image"
+                                    src="{{ url_for('static', filename='images/yolov8.png') }}" alt="">
+                            </div>
+
+                            <div class="c-dock-mode_img-container_item js-hybrid-img -hybrid">
+                                <img class="c-dock-mode_img-container_item_image"
+                                    src="{{ url_for('static', filename='images/flask.png') }}" alt="">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="o-anchor-section js-animate" id="anchor-experts" data-callback="trigger.SectionLabel()"
+                    data-repeat data-position="middle">
+                    <section class="o-container-full -light-grey c-block-experts">
+                        <div class="o-container -larger c-block -padding-bottom-small c-block-img-text-box -reversed">
+                            <p class="o-label c-block-experts_label">
+                                <span class="o-label_item">Devsphere</span>
+                                <span class="o-label_line"></span>
+                                <span class="o-label_item">Experts</span>
+                            </p>
+
+                            <div class="c-block-img-text-box_content">
+                                <div class="c-block-img-text-box_img-container">
+                                    <img src="{{ url_for('static', filename='images/WEBSITE-TEAM-color.jpeg') }}"
+                                        alt="Devsphere" class="c-block-img-text-box_img js-animate" data-speed="-1">
+                                </div>
+
+                                <div class="c-block-img-text-box_box js-animate" data-speed="1">
+                                    <span class="c-block-img-text-box_quote-container font-arial">
+                                        <span class="c-block-img-text-box_quote js-animate" data-speed="1">“</span>
+                                    </span>
+
+                                    <p>DentActive - Your all-in-one solution for efficient and reliable car damage
+                                        detection, powered by a team of dedicated professionals.</p>
+
+                                    <p class="o-label c-block-img-text-box_label">
+                                        <span class="o-label_line"></span>
+                                        <span class="o-label_item">Devsphere</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="o-h -huge c-block-experts_rail c-text-rail" data-module="Rail" data-rail-speed="1">
+                            Experts</div>
+                    </section>
+                </div>
+
+                <div class="o-anchor-section js-animate" id="anchor-news" data-callback="trigger.SectionLabel()"
+                    data-repeat data-position="middle">
+                    <section class="o-container-full c-carousel-news-container" data-module="CarouselNews">
+                        <div class="o-container -larger c-block">
+                            <div class="c-carousel-news js-carousel-news">
+                                <article class="c-carousel-news_slide js-carousel-slide">
+                                    <div class="o-layout -gutter-small">
+                                        <div class="o-layout_item u-1/2@from-small c-carousel-news_slide_content">
+                                            <p class="o-label c-post-list_label"">Dent</p>
+                                            <p class=" c-post-list_title">That dent doesn't stand a fighting chance!
+                                            </p>
+                                        </div>
+                                        <div class="o-layout_item u-1/2@from-small">
+                                            <div class="c-carousel-news_slide_image-link">
+                                                <img class="c-carousel-news_slide_image-sizer"
+                                                    src="{{ url_for('static', filename='images/square-sizer.gif') }}"
+                                                    alt="">
+
+                                                <div class="c-carousel-news_slide_image" <div
+                                                    class="c-carousel-news_slide_image"
+                                                    style="background-image: url({{ url_for('static', filename='images/dent.jpg') }})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="c-carousel-news_slide js-carousel-slide">
+                                    <div class="o-layout -gutter-small">
+                                        <div class="o-layout_item u-1/2@from-small c-carousel-news_slide_content">
+                                            <p class="o-label c-post-list_label"">Smash</p>
+                                            <p class=" c-post-list_title">The smash has been caught in the act!</p>
+                                        </div>
+                                        <div class="o-layout_item u-1/2@from-small">
+                                            <div class="c-carousel-news_slide_image-link">
+                                                <img class="c-carousel-news_slide_image-sizer"
+                                                    src="{{ url_for('static', filename='images/square-sizer.gif') }}"
+                                                    alt="">
+
+                                                <div class="c-carousel-news_slide_image"
+                                                    style="background-image: url({{ url_for('static', filename='images/smash.jpg') }})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="c-carousel-news_slide js-carousel-slide">
+                                    <div class="o-layout -gutter-small">
+                                        <div class="o-layout_item u-1/2@from-small c-carousel-news_slide_content">
+                                            <p class="o-label c-post-list_label"">Scratch</p>
+                                            <p class=" c-post-list_title">That scratch has met its match!</p>
+                                        </div>
+                                        <div class="o-layout_item u-1/2@from-small">
+                                            <div class="c-carousel-news_slide_image-link">
+                                                <img class="c-carousel-news_slide_image-sizer"
+                                                    src="{{ url_for('static', filename='images/square-sizer.gif') }}"
+                                                    alt="">
+
+                                                <div class="c-carousel-news_slide_image"
+                                                    style="background-image: url({{ url_for('static', filename='images/scratch.jpg') }})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="c-carousel-news_slide js-carousel-slide">
+                                    <div class="o-layout -gutter-small">
+                                        <div class="o-layout_item u-1/2@from-small c-carousel-news_slide_content">
+                                            <p class="o-label c-post-list_label"">Glass Break</p>
+                                            <p class=" c-post-list_title">The shattering of glass has been unmistakably
+                                                captured!</p>
+                                        </div>
+                                        <div class="o-layout_item u-1/2@from-small">
+                                            <div class="c-carousel-news_slide_image-link">
+                                                <img class="c-carousel-news_slide_image-sizer"
+                                                    src="{{ url_for('static', filename='images/square-sizer.gif') }}"
+                                                    alt="">
+
+                                                <div class="c-carousel-news_slide_image"
+                                                    style="background-image: url({{ url_for('static', filename='images/glass_break.jpg') }})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="c-carousel-news-controls">
+                                <div class="c-carousel-progress_wrapper">
+                                    <div class="c-carousel-progress_stripe"></div>
+                                </div>
+                            </div>
+
+                            <div class="c-carousel-news_see-all-wrapper">
+                                <a href="https://drive.google.com/drive/u/9/folders/10lZJ17bG8gJaFlHjdVs_QuKdCtDsGoRY"
+                                    class="o-link -inverted c-carousel-news_see-all">See all images</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <footer class="o-container-full c-footer js-animate" data-module="StickyCTA" data-repeat
+                    data-callback="hide.StickyCTA()">
+                    <div class="c-footer_col left-col">
+                        <div class="c-footer_row -padding -space-between -align-center -top">
+                            <a href="" class="c-footer_logo">
+                            </a>
+                            <ul class="c-social-nav">
+                                <li class="c-social-nav_item">
+                                    <a class="c-social-nav_item_link" href="" target="_blank">
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li class="c-social-nav_item">
+                                    <a class="c-social-nav_item_link" href="" target="_blank">
+                                        Twitter
+                                    </a>
+                                </li>
+                                <li class="c-social-nav_item">
+                                    <a class="c-social-nav_item_link" href="" target="_blank">
+                                        YouTube
+                                    </a>
+                                </li>
+                                <li class="c-social-nav_item">
+                                    <a class="c-social-nav_item_link" href="" target="_blank">
+                                        LinkedIn
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="c-footer_row -padding -padding-vertical c-footer-nav-container">
+                            <div class="c-footer-nav">
+                                <span class="o-label c-footer-label">Model Evaluation</span>
+
+                                <ul class="c-footer-nav_list">
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://drive.google.com/file/d/1077Qbv0eE30rw3HpS0Q-lAi6ZDV8Am1L/view?usp=sharing"
+                                            class="o-link">
+                                            Confusion Matrix
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://drive.google.com/file/d/10JYD1wirIVpMLp7jm3El74_xjKM8AdDL/view?usp=sharing"
+                                            class="o-link">
+                                            Training Loss Graph
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="c-footer-nav">
+                                <span class="o-label c-footer-label">Our Team</span>
+
+                                <ul class="c-footer-nav_list">
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://www.linkedin.com/in/tejassingh026/" class="o-link">
+                                            Tejas
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://www.linkedin.com/in/sudhz/" class="o-link">
+                                            Sudhanshu
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://www.linkedin.com/in/adarsh-vardhan-singh-193801231/"
+                                            class="o-link">
+                                            Adarsh
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://www.linkedin.com/in/shivesh-raj-a09a18206/" class="o-link">
+                                            Shivesh
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div
+                            class="c-footer_row -padding -padding-vertical -space-between -align-center c-footer-contact">
+                            <div class="c-footer-contact_block">
+                                <span class="o-label c-footer-label">Mobile Number</span>
+                                <a class="c-footer-contact_link o-link" href="tel:+91 xxxx-nnnnnn">+91 xxxx-nnnnnn</a>
+                            </div>
+
+                            <div class="c-footer-contact_block">
+                                <span class="o-label c-footer-label">Telephone Number</span>
+                                <a class="c-footer-contact_link o-link" href="tel:800 xxx xxx">800 xxx xxx</a>
+                            </div>
+
+                            <div class="c-footer-contact_block">
+                                <span class="o-label c-footer-label">Say Hello</span>
+                                <a class="c-footer-contact_link o-link"
+                                    href="mailto:xyz@dentactive.com">xyz@dentactive.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contact-us" class="c-footer_col right-col">
+                        <a href="#upload"
+                            class="c-footer_row -padding-small -space-between -align-center -top c-footer_btn-tile -red js-scrollto no-transition">
+                            <p class="c-footer_btn-tile_label">Start Detecting Damage</p>
+                            <div class="o-button-round">
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/ec-026"
+                            class="c-footer_row -padding-small -space-between -align-center -top c-footer_btn-tile">
+                            <p class="c-footer_btn-tile_label">GitHub Repository</p>
+                            <div class="o-button-round -dark">
+                            </div>
+                        </a>
+
+                        <div class="c-footer_row -padding-small -flex-column -padding-vertical c-footer-newsletter">
+                            <div class="c-footer-nav">
+                                <span class="o-label c-footer-label">Technologies Used</span>
+
+                                <ul class="c-footer-nav_list">
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://www.python.org/" class="o-link">
+                                            Python
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://opencv.org/" class="o-link">
+                                            OpenCV
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://docs.ultralytics.com/" class="o-link">
+                                            YoloV8
+                                        </a>
+                                    </li>
+                                    <li class="c-footer-nav_list_item">
+                                        <a href="https://flask.palletsprojects.com/en/2.2.x/" class="o-link">
+                                            Flask
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-footer_col c-footer_credit">
+                        <div class="c-footer_row -padding -space-between -align-center c-footer_credit_container">
+                            <div class="c-footer_credit_item">
+                                <span>Copyright 2023</span>
+
+                                <ul class="c-footer_credit_nav">
+                                    <li class="c-footer_credit_nav_item">
+                                        <a href="" class="o-link -small">Legal Notice</a>
+                                    </li>
+                                    <li class="c-footer_credit_nav_item">
+                                        <a href="" class="o-link -small">Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="c-footer_credit_item">
+                                <a href="https://github.com/ec-026" class="o-link -small" target="_blank">Website by
+                                    Devsphere</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <div class="o-anchor-section-stop js-animate" data-callback="hideAll.SectionLabel()" data-repeat>
+                </div>
+            </div>
+            <!-- end scroll -->
+
+            <!-- End home -->
+        </div>
+        <!-- pjax container -->
+    </div>
+    <!-- pjax wrapper -->
+
+    <script>
+        window.isMobile = false;
+        window.isEdge = false;
+        window.isTrident = false;
+        window.isFirefox = false;
+        window.recaptchaKey = '6Le2d1wUAAAAACfMVUnxHrpHhg5StEH82CFLGBzE';
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/vendors.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+
+</body>
+
+</html>

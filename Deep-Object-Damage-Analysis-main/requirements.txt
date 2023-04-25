@@ -1,0 +1,12 @@
+argparse
+pillow
+torch
+opencv-python-headless
+numpy
+tensorflow
+flask
+werkzeug
+requests
+ultralytics==8.0.55
+scikit-image
+scikit-learn
