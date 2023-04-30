@@ -1,6 +1,6 @@
 import argparse
 import io
-from PIL import image
+from PIL import Image
 import datetime
 from damage_detector import DamageDetector
 
