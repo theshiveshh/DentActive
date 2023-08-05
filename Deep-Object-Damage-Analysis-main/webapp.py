@@ -94,6 +94,7 @@ def predict_img():
 
                         cv2.putText(saved_image, text, (text_x, text_y),
                                     font, 0.6, (255, 255, 255), thickness=1)
+                        
 
                         os.remove('temp.jpg')
                 font = cv2.FONT_HERSHEY_SIMPLEX
